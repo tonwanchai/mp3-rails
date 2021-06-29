@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @music.name %>
+
+<div>
+  <audio controls>
+  
+    <source src="<%= rails_blob_url(@music.mp3) %>" type="audio/mpeg"/>
+  </audio>
+</div>
+
+
+<%= link_to 'Edit', edit_music_path(@music) %> |
+<%= link_to 'Back', musics_path %>
