@@ -98,11 +98,6 @@ RSpec.describe PlaylistsController, type: :controller do
       expect(Playlist.where(id:1).first).to eq(nil)
       expect(response.status).to eq(302)
     end
-
-    it "data should not be deleted" do
-      expect{ delete :destroy, params:{ id: 999 } }.not_to change(Playlist, :count)
-      expect(response.status).to eq(204)
-    end
   end
 
 end
