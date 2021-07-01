@@ -4,6 +4,8 @@ class MusicsController < ApplicationController
   # GET /musics or /musics.json
   def index
     @musics = Music.all
+    @playlists = Playlist.all
+    render status: :ok
   end
 
   # GET /musics/1 or /musics/1.json
@@ -23,7 +25,8 @@ class MusicsController < ApplicationController
   # POST /musics or /musics.json
   def create
     @music = Music.new(music_params)
-
+    Rails.logger.debug("**************************************#{@music}")
+    Rails.logger.debug("**************************************#{music_params}")
     respond_to do |format|
       if @music.save
         format.html { redirect_to @music, notice: "Music was successfully created." }
@@ -65,6 +68,6 @@ class MusicsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def music_params
-      params.require(:music).permit(:name, :mp3)
+      params.require(:music).permit(:name, :mp3, :artist)
     end
 end

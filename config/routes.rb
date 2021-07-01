@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
   resources :musics
-
+  resources :playlists
+  resources :playlists_musics
+  post "playlists_musics/new"  => "playlists_musics#create"
   namespace :api, defaults: { format: 'json' } do
     resources :musics, only: [:show]
   end

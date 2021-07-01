@@ -3,9 +3,12 @@
 <p>
   <strong>Name:</strong>
   <%= @music.name %>
+<p>
+  <strong>Artist:</strong>
+  <%= @music.artist %>
 
 <div>
-  <audio controls>
+  <audio controls autoplay>
   
     <source src="<%= rails_blob_url(@music.mp3) %>" type="audio/mpeg"/>
   </audio>

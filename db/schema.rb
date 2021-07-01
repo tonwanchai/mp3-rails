@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_29_025015) do
+ActiveRecord::Schema.define(version: 2021_06_29_060943) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -47,6 +47,23 @@ ActiveRecord::Schema.define(version: 2021_06_29_025015) do
     t.string "artist"
   end
 
+  create_table "playlist_musics", force: :cascade do |t|
+    t.integer "music_id", null: false
+    t.integer "playlist_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["music_id"], name: "index_playlist_musics_on_music_id"
+    t.index ["playlist_id"], name: "index_playlist_musics_on_playlist_id"
+  end
+
+  create_table "playlists", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "playlist_musics", "musics"
+  add_foreign_key "playlist_musics", "playlists"
 end
