@@ -2,7 +2,7 @@
 <div>
   <h1>Musics</h1>
 
-    <div class="list-group" style="width:200px">
+    <div class="list-group" style="width:300px">
       <% @musics.each do |music| %>
         <%= link_to music, :class=>"list-group-item" do %>
           <h5 stlye="font-weight:bold"> <%= music.name %> </h5>
@@ -16,7 +16,7 @@
 
 <div>
   <p class="h1">Playlists</p>
-  <div class="card box" style="width: 15rem; ">
+  
     <% @playlists.each do |playlist| %>
       <div class="card" style="width: 15rem; display:'flex'">
         <div class="card-body">
@@ -28,6 +28,6 @@
       
       </div>
     <% end %>
-  </div>
+  
   <%= link_to 'New Playlist', new_playlist_path %>      
 </div>
