@@ -6,19 +6,13 @@ RSpec.describe PlaylistsController, type: :controller do
     it "should renders the index template" do
       get :index   
       expect(response).to render_template("index")
+      expect(response.status).to eq(200)
     end
-
-    it "" do
-      get :index
-      expect()
-    end
-
   end
 
   describe "GET /show" do
     it "should show playlist" do
-      get :show, params: { id: 1}
-      
+      get :show, params: { id: 1 }
       expect(response).to render_template("show")
       expect(response.status).to eq(200)
     end

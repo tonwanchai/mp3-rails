@@ -16,4 +16,5 @@
 
 
 <%= link_to 'Edit', edit_music_path(@music) %> |
-<%= link_to 'Back', musics_path %>
+<%= link_to 'Back', musics_path %> |
+<%= link_to 'Destroy', @music, method: :delete, data: { confirm: 'Are you sure?' } %>
