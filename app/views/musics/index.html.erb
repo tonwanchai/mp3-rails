@@ -2,39 +2,26 @@
 <div>
   <h1>Musics</h1>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
+    <div class="list-group" style="width:200px">
       <% @musics.each do |music| %>
-        <tr>
-          <td><%= music.name %></td>
-          <td><%= link_to 'Show', music %> |</td>
-          <td><%= link_to 'Edit', edit_music_path(music) %> |</td>
-          <td><%= link_to 'Destroy', music, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
+        <%= link_to music, :class=>"list-group-item" do %>
+          <h5 stlye="font-weight:bold"> <%= music.name %> </h5>
+          <p> <%= music.artist  %> </p>
+         <% end %>
       <% end %>
-    </tbody>
-  </table>
-
+    </div>
   <br>
-
   <%= link_to 'New Music', new_music_path %>
 </div>
 
-<div >
+<div>
   <p class="h1">Playlists</p>
-  <div class="card" style="width: 15rem; ">
+  <div class="card box" style="width: 15rem; ">
     <% @playlists.each do |playlist| %>
       <div class="card" style="width: 15rem; display:'flex'">
         <div class="card-body">
           <div style="width:200px; height:auto" >
-            <%= image_tag(playlist.picture, width:"100%" , :class => "img-thumbnail" ) %>
+            <%= image_tag(playlist.picture, width:"100%" , :class => "card-img-top" ) %>
           </div>
           <%= link_to playlist.name , playlist%>
         </div>
