@@ -4,5 +4,4 @@ class Playlist < ApplicationRecord
   has_many :musics, through: :playlist_musics
   accepts_nested_attributes_for :playlist_musics
   validates :name , presence: true
-  
 end
