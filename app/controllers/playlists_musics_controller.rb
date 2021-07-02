@@ -14,11 +14,13 @@ class PlaylistsMusicsController < ApplicationController
 
   def create
     @playlist_music = PlaylistMusic.new()
+    Rails.logger.debug("-----------------------------#{playlist_music_params}")
+    pp playlist_music_params
     params[:music]["music_ids"].each do |i|
       PlaylistMusic.new(playlist_id: params[:playlist_id], music_id: i).save
     end
     
-    Rails.logger.debug("********************#{params}")
+    
     redirect_to "/musics"
   end
 
@@ -34,7 +36,7 @@ class PlaylistsMusicsController < ApplicationController
   end
   private
     def playlist_music_params
-      params.require(:playlist_music).permit(:music_ids, :playlist_id)
+      params.permit(:music_ids, :playlist_id)
     end
 
 end
