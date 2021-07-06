@@ -1,6 +1,5 @@
 class PlaylistsController < ApplicationController
   before_action :set_playlist, only: %i[ show edit update destroy ]
-
   def index
     @playlists = Playlist.all
     respond_to do |format|
@@ -14,7 +13,6 @@ class PlaylistsController < ApplicationController
     #Rails.logger.debug("**************************************#{rails_blob_url(@playlist.picture)}")
     Rails.logger.debug("**************************************#{params[:id]}")
     @playlist_musics = PlaylistMusic.where(playlist_id:params[:id])
-
   end
 
   def new
@@ -23,11 +21,8 @@ class PlaylistsController < ApplicationController
   end
 
   def create
-    
     @playlist = Playlist.new(playlist_params)
-
     Rails.logger.debug("**************************************#{@playlist}")
-
     respond_to do |format|
       if @playlist.save
         format.html { redirect_to @playlist, notice: "Playlist was successfully created." }
@@ -56,7 +51,6 @@ class PlaylistsController < ApplicationController
 
   def destroy
     @playlist = Playlist.where(id: params[:id]).first
-    
     @playlist.destroy
     respond_to do |format|
       format.html { redirect_to musics_url, notice: "Music was successfully destroyed." }
