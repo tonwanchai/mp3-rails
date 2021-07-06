@@ -1,0 +1,16 @@
+<%= form_with(model: @playlist, url: add_music_to_playlist_playlist_path)  do |form| %>
+  <div class="field">
+    <% @musics.each do |music| %>
+      <%= check_box_tag "music[music_ids][]", music.id %>
+      <%= music.name %>
+      <br/>
+    <% end %> 
+  </div>
+
+  <div>
+    <%= form.hidden_field :playlist_id , :value => params[:playlist_id] %>
+  </div>
+  <div class="actions">
+      <%= form.submit %>
+  </div>
+<% end %>

@@ -5,12 +5,13 @@
 <p class="h4"> list </p>
 
 <div class="list-group" style="width:300px">
-  <% PlaylistMusic.where(playlist_id: @playlist.id).each do |p_m| %>
+  <% @playlist.musics.each do |p_m| %>
     <div class="list-group-item">
-    <h5 stlye="font-weight:bold"> <%= Music.where(id:p_m["music_id"]).first.name %> </h5>
-    <p> <%= Music.where(id:p_m["music_id"]).first.artist %> </p>
-    <%= link_to "x" ,"/playlists_musics/#{p_m.id}" ,
-      method: :delete , data: { confirm: 'Are you sure?' }, :class=>"btn btn-dark btn-sm" %>
+    <h5 stlye="font-weight:bold"> <%= p_m.name %> </h5>
+    <p> <%= p_m.artist %> </p>
+    <%= link_to "x" ,delete_music_from_playlist_playlist_path(music_id: p_m.id),
+      method: :patch, data: { confirm: 'Are you sure?' }, :class=>"btn btn-dark btn-sm" %>
     </div>
   <% end %>
 </div>
+

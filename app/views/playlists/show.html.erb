@@ -15,12 +15,12 @@
 <%= link_to 'Back', musics_path %> |
 <%= link_to "Delete playlist" ,@playlist , method: :delete , data: { confirm: 'Are you sure?' } %>
 
-<p> <%= link_to 'Add musics to playlist', new_playlists_music_path(:playlist_id => @playlist.id) %> </p>
+<p> <%= link_to 'Add musics to playlist', get_all_music_playlist_path(:playlist_id => @playlist.id) %> </p>
 <div class="list-group" style="width:300px">
-  <% PlaylistMusic.where(playlist_id: @playlist.id).each do |p_m| %>
-    <%= link_to "/musics/#{p_m["music_id"]}", :class=>"list-group-item" do %>
-      <h5 stlye="font-weight:bold"> <%= Music.where(id:p_m["music_id"]).first.name %> </h5>
-      <p> <%= Music.where(id:p_m["music_id"]).first.artist %> </p>
+  <% @playlist.musics.each do |p_m| %>
+    <%= link_to "/musics/#{p_m.id}", :class=>"list-group-item" do %>
+      <h5 stlye="font-weight:bold"> <%= p_m.name %> </h5>
+      <p> <%= p_m.artist %> </p>
     <% end %>
   <% end %>
 </div>
