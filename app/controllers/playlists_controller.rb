@@ -1,5 +1,6 @@
 class PlaylistsController < ApplicationController
-  before_action :set_playlist, only: %i[ show edit update destroy ]
+  before_action :set_playlist, except: %i[index] 
+
   def index
     @playlists = Playlist.all
     respond_to do |format|
@@ -11,8 +12,10 @@ class PlaylistsController < ApplicationController
 
   def show
     #Rails.logger.debug("**************************************#{rails_blob_url(@playlist.picture)}")
-    Rails.logger.debug("**************************************#{params[:id]}")
-    @playlist_musics = PlaylistMusic.where(playlist_id:params[:id])
+    #@playlist_musics = PlaylistMusic.where(playlist_id:params[:id])
+    # @playlist = Playlist.find(params[:id])
+    @musics = Music.all
+    Rails.logger.debug("**************************************#{@playlist_musics}")
   end
 
   def new
@@ -50,13 +53,34 @@ class PlaylistsController < ApplicationController
   end
 
   def destroy
-    @playlist = Playlist.where(id: params[:id]).first
+    # @playlist = Playlist.where(id: params[:id]).first
     @playlist.destroy
     respond_to do |format|
       format.html { redirect_to musics_url, notice: "Music was successfully destroyed." }
       format.json { head :no_content }
     end
     
+  end
+
+  def delete_music_from_playlist
+    music = Music.where(id: params[:music_id]).first
+    @playlist.musics.delete(music)
+  end
+
+  def get_all_music
+    @musics = Music.all
+  end
+
+
+  def add_music_to_playlist
+   
+    Rails.logger.debug("::::::::::::::::::::#{params[:music]["music_ids"]}")
+    musics = Music.where(id: params[:music]["music_ids"])
+
+    # musics = Music.where(:id.in => params[:music]["music_ids"])
+    @playlist.musics << musics
+    
+    redirect_to "/playlists/#{params[:id]}"
   end
 
   private
