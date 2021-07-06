@@ -12,7 +12,7 @@
 
 
 <%= link_to 'Edit', edit_playlist_path(@playlist) %> |
-<%= link_to 'Back', musics_path %>
+<%= link_to 'Back', musics_path %> |
 <%= link_to "Delete playlist" ,@playlist , method: :delete , data: { confirm: 'Are you sure?' } %>
 
 <p> <%= link_to 'Add musics to playlist', new_playlists_music_path(:playlist_id => @playlist.id) %> </p>
