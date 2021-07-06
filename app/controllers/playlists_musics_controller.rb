@@ -6,7 +6,6 @@ class PlaylistsMusicsController < ApplicationController
   def new
     @playlist_music = PlaylistMusic.new
     @musics = Music.all
-    
   end
 
   def show
@@ -15,17 +14,14 @@ class PlaylistsMusicsController < ApplicationController
   def create
     @playlist_music = PlaylistMusic.new()
     Rails.logger.debug("-----------------------------#{playlist_music_params}")
-    pp playlist_music_params
+    
     params[:music]["music_ids"].each do |i|
       PlaylistMusic.new(playlist_id: params[:playlist_id], music_id: i).save
     end
-    
-    
     redirect_to "/musics"
   end
 
   def destroy
-    Rails.logger.debug("******************-**-*-*-*-*-*-*-*-****#{@playlist_music}")
     @playlist_music = PlaylistMusic.where(id: params[:id]).first
     p_id = @playlist_music["playlist_id"]
     @playlist_music.destroy
