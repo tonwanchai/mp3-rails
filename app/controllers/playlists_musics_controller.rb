@@ -14,7 +14,6 @@ class PlaylistsMusicsController < ApplicationController
   def create
     @playlist_music = PlaylistMusic.new()
     Rails.logger.debug("-----------------------------#{playlist_music_params}")
-    
     params[:music]["music_ids"].each do |i|
       PlaylistMusic.new(playlist_id: params[:playlist_id], music_id: i).save
     end
@@ -30,6 +29,7 @@ class PlaylistsMusicsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
   private
     def playlist_music_params
       params.permit(:music_ids, :playlist_id)
