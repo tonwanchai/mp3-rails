@@ -61,7 +61,7 @@ RSpec.describe MusicsController, type: :controller do
 
   describe "GET /edit" do
     it "should show edit" do
-      get :edit, params: { id: 1}
+      get :edit, params: { id: 1 }
       expect(response).to render_template("edit")
       expect(response.status).to eq(200)
     end

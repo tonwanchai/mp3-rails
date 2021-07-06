@@ -59,6 +59,11 @@ RSpec.describe PlaylistsController, type: :controller do
   end
 
   describe "GET /edit" do
+    it "should show edit" do
+      get :edit, params: { id: 1 }
+      expect(response).to render_template("edit")
+      expect(response.status).to eq(200)
+    end
   end
 
   describe "PATCH /update" do

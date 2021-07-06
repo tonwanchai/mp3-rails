@@ -1,4 +1,5 @@
 <p id="notice"><%= notice %></p>
+
 <div>
   <h1>Musics</h1>
 
@@ -18,15 +19,16 @@
   <p class="h1">Playlists</p>
   
     <% @playlists.each do |playlist| %>
-      <div class="card" style="width: 15rem; display:'flex'">
-        <div class="card-body">
-          <div style="width:200px; height:auto" >
-            <%= image_tag(playlist.picture, width:"100%" , :class => "card-img-top" ) %>
+      <%= link_to playlist do %>
+        <div class="card" style="width: 15rem; display:'flex'">
+          <div class="card-body">
+            <div style="width:200px; height:auto" >
+              <%= image_tag(playlist.picture, width:"100%" , :class => "card-img-top" ) %>
+            </div>
+            <%= link_to playlist.name , playlist%>
           </div>
-          <%= link_to playlist.name , playlist%>
         </div>
-      
-      </div>
+      <% end %>
     <% end %>
   
   <%= link_to 'New Playlist', new_playlist_path %>      
