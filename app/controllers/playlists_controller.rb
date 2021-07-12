@@ -1,5 +1,5 @@
 class PlaylistsController < ApplicationController
-  before_action :set_playlist, except: %i[index] 
+  before_action :set_playlist, except: %i[index new create] 
 
   def index
     @playlists = Playlist.all
@@ -43,7 +43,7 @@ class PlaylistsController < ApplicationController
   def update
     respond_to do |format|
       if @playlist.update(playlist_params)
-        format.html { redirect_to @playlist, notice: "Music was successfully updated." }
+        format.html { redirect_to @playlist, notice: "PLaylist was successfully updated." }
         format.json { render :show, status: :ok, location: @playlist }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,10 +53,11 @@ class PlaylistsController < ApplicationController
   end
 
   def destroy
-    # @playlist = Playlist.where(id: params[:id]).first
+    #@playlist = Playlist.where(id: params[:id]).first
+    @playlist.musics.clear
     @playlist.destroy
     respond_to do |format|
-      format.html { redirect_to musics_url, notice: "Music was successfully destroyed." }
+      format.html { redirect_to playlists_url, notice: "Playlist was successfully destroyed." }
       format.json { head :no_content }
     end
     

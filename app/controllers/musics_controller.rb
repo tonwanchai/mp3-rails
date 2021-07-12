@@ -10,7 +10,7 @@ class MusicsController < ApplicationController
 
   # GET /musics/1 or /musics/1.json
   def show
-    #Rails.logger.debug("**************************************#{rails_blob_url(@music.mp3)}")
+    Rails.logger.debug("**************************************#{rails_blob_url(@music.mp3)}")
   end
 
   # GET /musics/new

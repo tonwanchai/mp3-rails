@@ -1,0 +1,21 @@
+.grid-container{
+  background-color: rgb(192, 112, 112);
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  align-content: center;
+  padding: 10px;
+}
+
+h1.a {
+  font-size: 100px;
+}
+
+div.form {
+  height: 600px;
+  width: 50%;
+}
+div.form-2 {
+  height: auto;
+  width: 40%;
+}

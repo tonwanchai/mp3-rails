@@ -1,0 +1,20 @@
+<div class="right-side">
+  <%= link_to "<button class='btn btn-sm btn-secondary'>back</button>".html_safe ,root_path %>  
+</div>
+<div class="container">
+  <p class="h1">Playlists</p>
+    <% @playlists.each do |playlist| %>
+      <%= link_to playlist do %>
+        <div class="card testhover" style="width: 15rem; display:'flex'">
+          <div class="card-body">
+            <div style="width:200px; height:auto" >
+              <%= image_tag(playlist.picture, width:"100%" , :class => "card-img-top" ) %>
+            </div>
+            <%=   playlist.name %>
+          </div>
+        </div>
+      <% end %>
+    <% end %> 
+  <br/>
+  <%= link_to '<button class="btn btn-primary">New Playlist</button>'.html_safe, new_playlist_path %>      
+</div>

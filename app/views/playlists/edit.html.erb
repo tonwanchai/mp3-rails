@@ -1,16 +1,19 @@
-<p class="h1" > Edit </p>
-
-<%= render 'form' ,playlist: @playlist %>
-
+<div class="component">
+  <p class="h1" > Edit </p>
+  <%= render 'form' ,playlist: @playlist %>
+</div>
 <p class="h4"> list </p>
-
-<div class="list-group" style="width:300px">
+<div class="list-group list-group-mine" style="width:330px">
   <% @playlist.musics.each do |p_m| %>
-    <div class="list-group-item">
-    <h5 stlye="font-weight:bold"> <%= p_m.name %> </h5>
-    <p> <%= p_m.artist %> </p>
-    <%= link_to "x" ,delete_music_from_playlist_playlist_path(music_id: p_m.id),
-      method: :patch, data: { confirm: 'Are you sure?' }, :class=>"btn btn-dark btn-sm" %>
+    <div class="list-group-item display-2">
+      <div >
+        <h5> <%= p_m.name %> </h5>
+        <p> <%= p_m.artist %> </p>
+      </div>
+      <div>
+      <%= link_to "<button class='btn btn-danger btn-sm'>x</button>".html_safe,delete_music_from_playlist_playlist_path(music_id: p_m.id),
+        method: :patch, data: { confirm: 'Are you sure?' } %>
+      </div>
     </div>
   <% end %>
 </div>

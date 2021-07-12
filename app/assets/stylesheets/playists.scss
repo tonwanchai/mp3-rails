@@ -6,3 +6,37 @@
   max-width: 300px;
   max-height: 200px;
 }
+
+div.display{
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+div.mar{
+  margin-top: 3em;
+  margin-left: 10em;
+}
+
+div.display-2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+div.item{
+  align-self: flex-end;
+}
+
+div.testhover :hover{
+  color: #fff;
+  background-color: rgb(139, 170, 255);
+}
+
+.list-group-mine .list-group-item {
+  border-top: 2px solid rgb(0, 0, 134);
+  border-left: 2px solid rgb(0, 0, 134);
+  border-right: 2px solid rgb(0, 0, 134);
+}
+

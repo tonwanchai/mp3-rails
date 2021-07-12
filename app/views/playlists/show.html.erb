@@ -1,26 +1,34 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @playlist.name %>
-<p>
- 
-
-<div>
-  <%= image_tag(@playlist.picture, style: 'width:200px;height:auto') %>
+<div class="right-side">
+  <%= link_to "<button class='btn btn-sm btn-secondary'>back</button>".html_safe ,root_path %>  
 </div>
+<div class="display">
+  <div class="container">
+    <p>
+      <strong>Name:</strong>
+      <%= @playlist.name %>
+    <p>
 
-
-<%= link_to 'Edit', edit_playlist_path(@playlist) %> |
-<%= link_to 'Back', musics_path %> |
-<%= link_to "Delete playlist" ,@playlist , method: :delete , data: { confirm: 'Are you sure?' } %>
-
-<p> <%= link_to 'Add musics to playlist', get_all_music_playlist_path(:playlist_id => @playlist.id) %> </p>
-<div class="list-group" style="width:300px">
-  <% @playlist.musics.each do |p_m| %>
-    <%= link_to "/musics/#{p_m.id}", :class=>"list-group-item" do %>
-      <h5 stlye="font-weight:bold"> <%= p_m.name %> </h5>
-      <p> <%= p_m.artist %> </p>
-    <% end %>
-  <% end %>
+    <div>
+      <%= image_tag(@playlist.picture, style: 'width:200px;height:auto') %>
+    </div><br/>
+    <%= link_to '<button class="btn btn-secondary">Edit</button>'.html_safe, edit_playlist_path(@playlist) %> 
+    <%= link_to "<button class='btn btn-secondary'>Delete playlist</button>".html_safe ,playlist_path ,
+      method: :delete , data: { confirm: 'Are you sure?' } %>
+    <br/> <br/>
+    <%= link_to "<button class='btn btn-primary'>Add musics to playlist</button>".html_safe,
+        get_all_music_playlist_path(:playlist_id => @playlist.id) %>
+  </div>
+  <div class="container mar ">
+    <div class="list-group list-group-mine" style="width:300px">
+      <% @playlist.musics.each do |p_m| %>
+        <div class="list-bd">
+        <%= link_to "/musics/#{p_m.id}", :class=>"list-group-item " do %>
+          <h5 stlye="font-weight:bold"> <%= p_m.name %> </h5>
+          <p> <%= p_m.artist %> </p>
+        <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -1,8 +1,8 @@
+<div class="right-side">
+  <%= link_to "<button class='btn btn-sm btn-secondary'>back</button>".html_safe ,musics_path %>  
+</div>
+<div class="container">
+  <h1>New Music</h1>
+  <%= render 'form', music: @music %>
+</div>
 
-<h1>New Music</h1>
-
-<%= render 'form', music: @music %>
-
-
-
-<%= link_to 'Back', musics_path %>

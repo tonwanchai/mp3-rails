@@ -1,26 +1,25 @@
-<%= form_with(model: playlist) do |form| %>
-  <% if playlist.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(playlist.errors.count, "error") %> prohibited this music from being saved:</h2>
-
-      <ul>
-        <% playlist.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
+<div class="form-2" >
+  <%= bootstrap_form_for(@playlist)  do |form| %>
+    <% if playlist.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(playlist.errors.count, "error") %> prohibited this music from being saved:</h2>
+        <ul>
+          <% playlist.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
   <% end %>
 
   <div class="field">
-    <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
 
   <div class="field">
-  <%= form.label :picture %>
-  <%= form.file_field :picture %>
-</div>
-  <div class="actions">
-    <%= form.submit %>
+    <%= form.file_field :picture, accept: 'image/png,image/jpg,image/jpeg'%>
   </div>
-<% end %>
+  <div class="actions">
+    <%= form.primary %>
+  </div>
+  <% end %>
+</div>

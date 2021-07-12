@@ -1,35 +1,18 @@
 <p id="notice"><%= notice %></p>
-
-<div>
+<div class="right-side">
+  <%= link_to "<button class='btn btn-sm btn-secondary'>back</button>".html_safe ,root_path %>  
+</div>
+<div class="container">
   <h1>Musics</h1>
 
-    <div class="list-group" style="width:300px">
+    <div class="list-group list-group-mine" style="width:300px">
       <% @musics.each do |music| %>
         <%= link_to music, :class=>"list-group-item" do %>
           <h5 stlye="font-weight:bold"> <%= music.name %> </h5>
           <p> <%= music.artist  %> </p>
-         <% end %>
+        <% end %>
       <% end %>
     </div>
   <br>
-  <%= link_to 'New Music', new_music_path %>
-</div>
-
-<div>
-  <p class="h1">Playlists</p>
-  
-    <% @playlists.each do |playlist| %>
-      <%= link_to playlist do %>
-        <div class="card" style="width: 15rem; display:'flex'">
-          <div class="card-body">
-            <div style="width:200px; height:auto" >
-              <%= image_tag(playlist.picture, width:"100%" , :class => "card-img-top" ) %>
-            </div>
-            <%= link_to playlist.name , playlist%>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  
-  <%= link_to 'New Playlist', new_playlist_path %>      
+  <%= link_to "<button class='btn btn-primary btn-sm'>New music</button>".html_safe, new_music_path %>
 </div>

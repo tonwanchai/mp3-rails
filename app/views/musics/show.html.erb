@@ -1,20 +1,23 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @music.name %>
-<p>
-  <strong>Artist:</strong>
-  <%= @music.artist %>
-
-<div>
-  <audio controls autoplay>
-  
-    <source src="<%= rails_blob_url(@music.mp3) %>" type="audio/mpeg"/>
-  </audio>
+<div class="right-side">
+  <%= link_to "<button class='btn btn-sm btn-secondary'>back</button>".html_safe ,musics_path %>  
 </div>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <p>
+    <strong>Name:</strong>
+    <%= @music.name %>
+  <p>
+    <strong>Artist:</strong>
+    <%= @music.artist %>
 
-
-<%= link_to 'Edit', edit_music_path(@music) %> |
-<%= link_to 'Back', musics_path %> |
-<%= link_to 'Destroy', @music, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <div>
+    <audio controls autoplay>
+    
+      <source src="<%= rails_blob_url(@music.mp3) %>" type="audio/mpeg"/>
+    </audio>
+  </div>
+</div>
+<br/>
+<%= link_to "<button class='btn btn-secondary btn-sm'>Edit</button>".html_safe, edit_music_path(@music) %> 
+<%= link_to "<button class='btn btn-secondary btn-sm'>Delete</button>".html_safe,
+  @music, method: :delete, data: { confirm: 'Are you sure?' } %> <br/>
